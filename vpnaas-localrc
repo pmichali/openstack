@@ -1,0 +1,39 @@
+DEST=/opt/stack
+disable_service n-net
+enable_service q-svc
+enable_service q-agt
+enable_service q-dhcp
+enable_service q-l3
+enable_service q-meta
+enable_service quantum
+enable_service tempest
+enable_service q-vpn
+API_RATE_LIMIT=False
+VOLUME_BACKING_FILE_SIZE=4G
+FIXED_RANGE=10.1.0.0/24
+FIXED_NETWORK_SIZE=256
+VIRT_DRIVER=libvirt
+SWIFT_REPLICAS=1
+export OS_NO_CACHE=True
+SCREEN_LOGDIR=/opt/stack/screen-logs
+SYSLOG=True
+SKIP_EXERCISES=boot_from_volume,client-env
+ROOTSLEEP=0
+ACTIVE_TIMEOUT=60
+Q_USE_SECGROUP=True
+BOOT_TIMEOUT=90
+ASSOCIATE_TIMEOUT=60
+ADMIN_PASSWORD=nova
+MYSQL_PASSWORD=nova
+RABBIT_PASSWORD=nova
+SERVICE_PASSWORD=nova
+SERVICE_TOKEN=tokentoken
+Q_PLUGIN=openvswitch
+Q_USE_DEBUG_COMMAND=True
+NETWORK_GATEWAY=10.1.0.1
+PUBLIC_NETWORK_GATEWAY=172.24.4.230
+PUBLIC_SUBNET_NAME=yoursubnet
+PRIVATE_SUBNET_NAME=mysubnet
+
+# RECLONE=no
+# OFFLINE=True
