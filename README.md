@@ -8,6 +8,7 @@ json-out.py
 -----------
 Created a quick Python script that takes a (Neutron) command line with --verbose flag turned on, and generates a pretty printed output of the JSON for the request and response messages, so that this can be included into API documentation. The script, called json-out.py, is my GitHub openstack repo. Here are the options to the script:
 
+<pre>
 Usage: json-out.py [options] -- command to run with verbose flag enabled
  
 Options:
@@ -19,17 +20,20 @@ Options:
   -a, --auth            Show authentication messages and headers
   -f FILE, --filename=FILE
                         Save JSON to file(s) with prefix specified
+</pre>
+
 The -o option will show the normal stdout from the command, whereas the -d option will show the stderr output, including debug logging from the --verbose flag you provide. If you want to see all header fields from the messages, you can use the -H option. If you also want to see the authorization messages and auth token (PSK), use the -a option.
 
 You can choose to have all JSON output go to a file with the prefix you specify, _req or _res for request and result JSON messages, a instance number for cases where more than one request/result would occur (e.g. auth messages and then create messages), and .json suffix.
 
 IMPORTANT NOTES:
 
-You must use a double dash to separate the options for the script from the command and options to run. 
-You also must have the desired user credentials set (e.g source openrc admin) for the commands you want to issue.
-You must include --verbose in the Neutron command to see the JSON output.
-This is geared for Neutron, but probably will work with other components, if they have an option to perform.  Here's an example:
+- You must use a double dash to separate the options for the script from the command and options to run. 
+- You also must have the desired user credentials set (e.g source openrc admin) for the commands you want to issue.
+- You must include --verbose in the Neutron command to see the JSON output.
+- This is geared for Neutron, but probably will work with other components, if they have an option to perform.  Here's an example:
 
+<pre>
 openstack@devstack-32:~/devstack$ python ../openstack/json-out.py -- neutron --verbose vpn-ikepolicy-create ikepolicy1
  
 JSON
@@ -74,3 +78,4 @@ RESPONSE
     "description": ""
   }
 }
+</pre>
