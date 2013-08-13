@@ -180,7 +180,7 @@ def collect_output_from_command(cmd):
         return output, err_msgs
     
 if __name__ == '__main__':
-    usage = "usage: %prog [options] command to run with verbose flag enabled"
+    usage = "usage: %prog [options] -- command to run with verbose flag enabled"
     
     parser = optparse.OptionParser(usage=usage, version="%prog 1.0")
     parser.add_option('-H', "--HEADERS", action='store_true', default=False,
