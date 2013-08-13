@@ -71,6 +71,10 @@ response_info_re = re.compile(r"({[^}]+})(.*)")
 class InvalidInputException(Exception):
     pass
 
+def strip_trailing_whitespace(multi_string):
+    stripped = [m.rstrip() for m in multi_string.split('\n')]
+    return '\n'.join(stripped)
+
 def extract_request(info):
     m = request_info_re.search(info)
     if m:
@@ -89,7 +93,8 @@ def extract_request(info):
 
         req_params = params_re.search(info)
         if req_params:
-            req_json = json.dumps(json.loads(req_params.group(1)), indent=2)
+            json_output = json.dumps(json.loads(req_params.group(1)), indent=2)
+            req_json = strip_trailing_whitespace(json_output)
         else:
             req_json = None
         return request_type, relative_url, filtered_headers, req_json
@@ -100,10 +105,12 @@ def extract_response(info):
     m = response_info_re.search(info)
     if m:
         stat_response = m.group(1).replace("'", '"')
-        json_status_response = json.dumps(json.loads(stat_response), indent=2)
+        json_output = json.dumps(json.loads(stat_response), indent=2)
+        json_status_response = strip_trailing_whitespace(json_output)
         response = m.group(2).strip()
         if response != '':
-            json_info_response = json.dumps(json.loads(response), indent=2)
+            json_output = json.dumps(json.loads(response), indent=2)
+            json_info_response = strip_trailing_whitespace(json_output)
         else:
             json_info_response = "[None]"
         return "%s\n%s\n" % (json_status_response, json_info_response)
@@ -130,18 +137,20 @@ def print_info_from_pairs(raw_list):
         print "REQUEST\n%s %s" % (request_type, url)
         print '\n'.join(headers)
         if request_json:
-            print '\n%s\n' % request_json
+            print '\n%s\n\n' % request_json
             if opts.filename:
                 name = "%s_req%s.json" % (opts.filename,
                                           str(instance) if instance > 0 else "")
                 with open(name, "w") as f:
                     f.write(request_json)
-        print '\nRESPONSE\n%s\n' % response_json
+                    f.write('\n')
+        print '\nRESPONSE\n%s\n\n' % response_json
         if opts.filename:
             name = "%s_res%s.json" % (opts.filename,
                                       str(instance) if instance > 0 else "")
             with open(name, "w") as f:
                 f.write(response_json)
+                f.write('\n')
             instance += 1
         
         
@@ -178,7 +187,7 @@ def collect_output_from_command(cmd):
         raise
     else:
         return output, err_msgs
-    
+
 if __name__ == '__main__':
     usage = "usage: %prog [options] -- command to run with verbose flag enabled"
     
