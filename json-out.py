@@ -191,7 +191,7 @@ def collect_output_from_command(cmd):
 if __name__ == '__main__':
     usage = "usage: %prog [options] -- command to run with verbose flag enabled"
     
-    parser = optparse.OptionParser(usage=usage, version="%prog 1.0")
+    parser = optparse.OptionParser(usage=usage, version="%prog 1.1")
     parser.add_option('-H', "--HEADERS", action='store_true', default=False,
                       dest='show_all_headers', help='Show all headers')
     parser.add_option('-o', "--output", action='store_true', default=False,
