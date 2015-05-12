@@ -16,6 +16,7 @@ The script will handle the case where an import has aliases, and imports where t
 
 Example:
 
+<pre>
 $ cd /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn
 $ python ~/openstack/scanner.py device_drivers
 Analysis for device_drivers/ipsec.py
@@ -69,7 +70,7 @@ Summary of neutron import usage
         ERROR
     neutron/plugins/common/utils.py
         in_pending_status
-
+</pre>
 
 json-out.py
 -----------
