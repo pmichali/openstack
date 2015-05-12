@@ -3,6 +3,73 @@ openstack
 
 Various OpenStack tools and files...
 
+scanner.py
+----------
+
+Run this and pass in a root directory and it will do the following things...
+
+First, it will look at each .py file and extract the Neutron imports in the file. Next, it will look at the places in the file where the import is used and collect up the name (method, variable, etc).
+
+As output, it will show each of the neutron files imported for the source file, along with the actual references. After all source files have been processed, the script will then print out all the neutron modules imported, along with a list of references used in each of the modules.
+
+The script will handle the case where an import has aliases, and imports where the method (e.g. i18n _LE) is specified in the import line. There is a test_scanner.py file that has unit tests for the script to cover the important bits (not the reporting).
+
+Example:
+
+$ cd /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn
+$ python ~/openstack/scanner.py device_drivers
+Analysis for device_drivers/ipsec.py
+    ...
+    neutron/i18n.py
+        _LE
+    neutron/openstack/common/loopingcall.py
+        FixedIntervalLoopingCall
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+        ERROR
+...
+Analysis for device_drivers/cisco_csr_rest_client.py
+    neutron/i18n.py
+        _LE
+        _LW
+Analysis for device_drivers/strongswan_ipsec.py
+    neutron/agent/linux/ip_lib.py
+        IPWrapper
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+...
+
+Summary of neutron import usage
+    neutron/agent/linux/ip_lib.py
+        IPWrapper
+    neutron/agent/linux/utils.py
+        replace_file
+    neutron/api/v2/attributes.py
+        _validate_ip_address
+    neutron/common/exceptions.py
+        NeutronException
+    neutron/common/rpc.py
+        create_connection
+        get_client
+    neutron/i18n.py
+        _LE
+        _LI
+        _LW
+    neutron/openstack/common/loopingcall.py
+        DynamicLoopingCall
+        FixedIntervalLoopingCall
+    neutron/openstack/common/periodic_task.py
+        PeriodicTasks
+        periodic_task
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+        ERROR
+    neutron/plugins/common/utils.py
+        in_pending_status
+
 
 json-out.py
 -----------
