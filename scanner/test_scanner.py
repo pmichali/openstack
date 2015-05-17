@@ -9,6 +9,13 @@ from neutron_vpnaas import scanner
 
 LOG = logging.getLogger(__name__)
 
+
+# NOTE: This was created to run under the VPN repo. Placed the source in the
+# neutron_vpnaas/ area, and this test file in neutron_vpnaas/tests/unit/.
+#
+# Run the test with:
+#    tox -e py27 -- neutron_vpnaas.tests.unit.test_scanner
+
 class TestImportParsing(base.BaseTestCase):
 
     def test_import(self):
@@ -188,6 +195,22 @@ class TestImportDetection(base.BaseTestCase):
         self.assertEqual(expected_module,
                          modules[expected_module].dotted_name)
         self.assertEqual('neutron/common/config.py',
+                         modules[expected_module].name)
+        self.assertEqual(set(), modules[expected_module].refs)
+
+    def test_import_directory(self):
+        expected_module = 'neutron.extensions'
+        expected_alias = 'extensions'
+        source_scanner = scanner.SourceScanner('source.py')
+        source_scanner.add_import(expected_alias, expected_module)
+        aliases = source_scanner.known_aliases
+        modules = source_scanner.imported_modules
+        self.assertIn(expected_alias, aliases)
+        self.assertEqual(expected_module, aliases[expected_alias].module_name)
+        self.assertIn(expected_module, modules)
+        self.assertEqual(expected_module,
+                         modules[expected_module].dotted_name)
+        self.assertEqual('neutron/extensions',
                          modules[expected_module].name)
         self.assertEqual(set(), modules[expected_module].refs)
 
