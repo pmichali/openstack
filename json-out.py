@@ -58,14 +58,15 @@ import subprocess
 import sys
 
 
-request_response_re = re.compile(r'(REQ|RESP):(.+)')
+request_response_re = re.compile(r'(REQ|RESP|RESP BODY):(.+)')
 errors_re = re.compile(r'(ERROR: .+|\S+: error: .+)')
 
-request_info_re = re.compile(r'curl -i \S+(/v2.0/\S+) -X (\S+) (.+)')
+request_info_re = re.compile(r'curl.+\s+-X\s+(\S+)\s+(http.+/v2.0\S*)\s+')
 headers_re = re.compile(r'\s*-H "(\S+): (\S+)"')
 params_re = re.compile(r"-d \'([^\']+)\'")
 
-response_info_re = re.compile(r"({[^}]+})(.*)")
+response_status_re = re.compile(r"\s*\[(\d+)\]\s+")
+# response_info_re = re.compile(r"({[^}]+})(.*)")
 
 
 class InvalidInputException(Exception):
@@ -78,8 +79,8 @@ def strip_trailing_whitespace(multi_string):
 def extract_request(info):
     m = request_info_re.search(info)
     if m:
-        relative_url = m.group(1)
-        request_type = m.group(2)
+        relative_url = m.group(2)
+        request_type = m.group(1)
 
         headers_dict = dict(headers_re.findall(info))
         if opts.show_all_headers:
@@ -88,7 +89,7 @@ def extract_request(info):
             headers = ('User-Agent', 'Accept')
         if not opts.show_auth and 'X-Auth-Token' in headers:
             del headers['X-Auth-Token']
-        filtered_headers = ["%s: %s" % (k,headers_dict[k])
+        filtered_headers = ["%s: %s" % (k, headers_dict[k])
                             for k in headers]
 
         req_params = params_re.search(info)
@@ -101,39 +102,44 @@ def extract_request(info):
     else:
         raise InvalidInputException("Unable to parse request: %s" % info)
 
-def extract_response(info):
-    m = response_info_re.search(info)
+def extract_response_status(info):
+    m = response_status_re.search(info)
     if m:
-        stat_response = m.group(1).replace("'", '"')
-        json_output = json.dumps(json.loads(stat_response), indent=2)
-        json_status_response = strip_trailing_whitespace(json_output)
-        response = m.group(2).strip()
-        if response != '':
-            json_output = json.dumps(json.loads(response), indent=2)
-            json_info_response = strip_trailing_whitespace(json_output)
-        else:
-            json_info_response = "[None]"
-        return "%s\n%s\n" % (json_status_response, json_info_response)
+        return m.group(1)
     else:
-        raise InvalidInputException("Unable to parse response: %s" % info)
+        raise InvalidInputException("Unable to parse response status: %s" % info)
 
-def print_info_from_pairs(raw_list):
+def extract_response(info):
+    response = info.strip()
+    if response:
+        json_output = json.dumps(json.loads(response), indent=2)
+        return strip_trailing_whitespace(json_output)
+    else:
+        return "[None]"
+
+def print_info_from_req_resp(raw_list):
     print "\nJSON"
     instance = 0
-    for request, response in izip(raw_list[::2], raw_list[1::2]):
+    for request, response, response_body in izip(raw_list[::3], raw_list[1::3],
+                                                 raw_list[2::3]):
         operation, info = request
         if operation != 'REQ':
             raise InvalidInputException("Missing expected request")
         
         request_type, url, headers, request_json = extract_request(info)
-        if not opts.show_auth and '/v2.0/token' in url:
+        if not opts.show_auth and url.endswith('v2.0'):
             continue # Don't care about authentication request/response
         
         operation, info = response
         if operation != 'RESP':
             raise InvalidInputException("Missing expected response")
+        response_status = extract_response_status(info)
+
+        operation, info = response_body
+        if operation != 'RESP BODY':
+            raise InvalidInputException("Missing expected response body")
         response_json = extract_response(info)
-        
+
         print "REQUEST\n%s %s" % (request_type, url)
         print '\n'.join(headers)
         if request_json:
@@ -144,7 +150,7 @@ def print_info_from_pairs(raw_list):
                 with open(name, "w") as f:
                     f.write(request_json)
                     f.write('\n')
-        print '\nRESPONSE\n%s\n\n' % response_json
+        print '\nRESPONSE (%s)\n%s\n\n' % (response_status, response_json)
         if opts.filename:
             name = "%s_res%s.json" % (opts.filename,
                                       str(instance) if instance > 0 else "")
@@ -224,4 +230,4 @@ if __name__ == '__main__':
     if opts.show_output:
         print "\nCOMMAND OUTPUT:\n"
         print normal_output
-    print_info_from_pairs(operations)
+    print_info_from_req_resp(operations)
