@@ -145,14 +145,14 @@ def print_info_from_req_resp(raw_list):
         if request_json:
             print '\n%s\n\n' % request_json
             if opts.filename:
-                name = "%s_req%s.json" % (opts.filename,
+                name = "%s-req%s.json" % (opts.filename,
                                           str(instance) if instance > 0 else "")
                 with open(name, "w") as f:
                     f.write(request_json)
                     f.write('\n')
         print '\nRESPONSE (%s)\n%s\n\n' % (response_status, response_json)
         if opts.filename:
-            name = "%s_res%s.json" % (opts.filename,
+            name = "%s-res%s.json" % (opts.filename,
                                       str(instance) if instance > 0 else "")
             with open(name, "w") as f:
                 f.write(response_json)
