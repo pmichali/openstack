@@ -94,7 +94,7 @@ def extract_request(info):
 
         req_params = params_re.search(info)
         if req_params:
-            json_output = json.dumps(json.loads(req_params.group(1)), indent=2)
+            json_output = json.dumps(json.loads(req_params.group(1)), indent=4)
             req_json = strip_trailing_whitespace(json_output)
         else:
             req_json = None
@@ -112,7 +112,7 @@ def extract_response_status(info):
 def extract_response(info):
     response = info.strip()
     if response:
-        json_output = json.dumps(json.loads(response), indent=2)
+        json_output = json.dumps(json.loads(response), indent=4)
         return strip_trailing_whitespace(json_output)
     else:
         return "[None]"
