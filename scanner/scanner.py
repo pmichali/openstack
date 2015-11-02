@@ -13,16 +13,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+from __future__ import print_function
+
+import argparse
 import fnmatch
 import operator
 import os
 import re
 import sys
 
-if len(sys.argv) == 1:
-    root = '.'
-else:
-    root = sys.argv[1]
 
 import_re = re.compile(r'import\s+(neutron\.\S+)')
 from_re = re.compile(r'from\s+(neutron\.\S+)\s+import\s+([^#]+)')
@@ -74,7 +73,7 @@ def gen_parse(a_file):
             if m:
                 yield True, base + '.' + target, alias
             else:
-                print "Parse error:", line
+                print ("Parse error:", line, file=output_file)
             continue
         m = from_line_one_re.match(line)
         if m:
@@ -152,10 +151,11 @@ class ImportAlias(object):
 
 class SourceScanner(object):
 
-    def __init__(self, name):
+    def __init__(self, name, output_file):
         self.known_aliases = {}
         self.imported_modules = {}
         self.name = name
+        self.output_file = output_file
 
     def add_import(self, alias, module_name):
         new_module = NeutronModule(module_name)
@@ -174,8 +174,8 @@ class SourceScanner(object):
                 module.add_usage(match)
 
     def report_for_source_module(self):
-        print "Analysis for", self.name
-        report_modules(self.imported_modules)
+        print("Analysis for", self.name, file=self.output_file)
+        report_modules(self.imported_modules, self.output_file)
 
     def analyze(self):
         with open(self.name) as o:
@@ -187,19 +187,24 @@ class SourceScanner(object):
                     self.find_import_usage(content)
 
 
-def report_modules(modules):
+def report_modules(modules, output_file):
     for module in sorted(modules.values(),
                          key=lambda a: a.dotted_name):
-        print "    " + module.name
+        print("    " + module.name, file=output_file)
         for ref in sorted(module.refs):
-            print "        %s" % ref
+            print("        %s" % ref, file=output_file)
 
 
-def process_references(from_root):
-    files = gen_find("*.py", from_root)
+def process_references(args):
+    if args.output:
+        output_file = open(args.output, 'w')
+    else:
+        output_file = sys.stdout
+
+    files = gen_find("*.py", args.root)
     all_references = {}
     for f in files:
-        source_scan = SourceScanner(f)
+        source_scan = SourceScanner(f, output_file)
         source_scan.analyze()
         source_scan.report_for_source_module()
         for module in source_scan.imported_modules.values():
@@ -207,9 +212,24 @@ def process_references(from_root):
                 all_references[module.dotted_name].refs |= module.refs
             else:
                 all_references[module.dotted_name] = module
-    print "\n\nSummary of neutron import usage"
-    report_modules(all_references)
+    if args.summary:
+        if args.output:
+            output_file.close()
+            output_file = open(args.output + '.summary', 'w')
+        else:
+            print('\n\n', file=output_file)
+        print("Summary of neutron import usage", file=output_file)
+        report_modules(all_references, output_file)
 
 
 if __name__ == '__main__':
-    process_references(root)
+    parser = argparse.ArgumentParser(description='Determine dependencies')
+    parser.add_argument('-o', '--output', dest='output', action='store',
+                        help='Redirect detailed output to file specified')
+    parser.add_argument('-s', '--summary', dest='summary', action='store_true',
+                        help='Generate summary output too')
+    parser.add_argument(dest='root', nargs='?', default='.',
+                       help='Starting point for scanning')
+    args = parser.parse_args()
+
+    process_references(args)

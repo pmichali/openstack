@@ -8,10 +8,10 @@ Summary of neutron import usage
     neutron/agent/linux/interface.py
         OPTS
     neutron/agent/linux/ip_lib.py
+        IPDevice
         IPWrapper
         device_exists
     neutron/agent/linux/utils.py
-        ensure_dir
         execute
         replace_file
     neutron/agent/rpc.py
@@ -26,7 +26,6 @@ Summary of neutron import usage
         ATTR_NOT_SPECIFIED
         PLURALS.update
         RESOURCE_ATTRIBUTE_MAP
-        RESOURCE_ATTRIBUTE_MAP.iteritems
         RESOURCE_ATTRIBUTE_MAP.update
         convert_none_to_empty_dict
         convert_to_boolean
@@ -40,11 +39,21 @@ Summary of neutron import usage
     neutron/api/v2/resource_helper.py
         build_plural_mappings
         build_resource_info
+    neutron/callbacks/events.py
+        BEFORE_DELETE
+    neutron/callbacks/registry.py
+        subscribe
+        unsubscribe
+    neutron/callbacks/resources.py
+        PORT
+        SUBNET
     neutron/common/config.py
         init
         load_paste_app
     neutron/common/constants.py
         AGENT_TYPE_LOADBALANCER
+        DEVICE_OWNER_LOADBALANCER
+        DEVICE_OWNER_LOADBALANCERV2
         LBAAS_AGENT_SCHEDULER_EXT_ALIAS
     neutron/common/exceptions.py
         BadRequest
@@ -58,7 +67,8 @@ Summary of neutron import usage
         NotFound
         PortNotFound
         PreexistingDeviceFailure
-        SubnetNotFound
+        ServicePortInUse
+        SubnetInUse
     neutron/common/rpc.py
         Service
         create_connection
@@ -67,6 +77,7 @@ Summary of neutron import usage
         LOADBALANCER_AGENT
         LOADBALANCER_PLUGIN
     neutron/common/utils.py
+        ensure_dir
         synchronized
     neutron/db/agents_db.py
         Agent
@@ -78,7 +89,11 @@ Summary of neutron import usage
     neutron/db/l3_db.py
         FloatingIP
     neutron/db/migration
+        LIBERTY
         alter_enum
+    neutron/db/migration/cli.py
+        CONTRACT_BRANCH
+        EXPAND_BRANCH
     neutron/db/model_base.py
         BASEV2
         BASEV2.__table_args__
@@ -91,8 +106,8 @@ Summary of neutron import usage
         Port
     neutron/db/servicetype_db.py
         ProviderResourceAssociation
-        ProviderResourceAssociation.provider_name
         ProviderResourceAssociation.resource_id
+        ServiceTypeManager
         ServiceTypeManager._instance
         ServiceTypeManager.get_instance
     neutron/extensions/agent.py
@@ -105,20 +120,9 @@ Summary of neutron import usage
         _LE
         _LI
         _LW
-    neutron/openstack/common/loopingcall.py
-        FixedIntervalLoopingCall
-    neutron/openstack/common/periodic_task.py
-        PeriodicTasks
-        periodic_task
-    neutron/openstack/common/service.py
-        Service
-        launch
-    neutron/openstack/common/uuidutils.py
-        generate_uuid
     neutron/plugins/common/constants.py
         ACTIVE
         ACTIVE_PENDING_STATUSES
-        COMMON_PREFIXES
         ERROR
         INACTIVE
         LOADBALANCER
@@ -126,15 +130,9 @@ Summary of neutron import usage
         PENDING_CREATE
         PENDING_DELETE
         PENDING_UPDATE
-    neutron/plugins/embrane/common/contexts.py
-        DispatcherContext
-        OperationContext
-    neutron/plugins/embrane/common/exceptions.py
-        UnsupportedException
-    neutron/plugins/embrane/common/utils.py
-        retrieve_ip_allocation_info
     neutron/services/provider_configuration.py
         DefaultServiceProviderNotFound
+        ProviderConfiguration
         ServiceProviderNotFound
         get_provider_driver_class
         normalize_provider_name
@@ -149,6 +147,8 @@ Summary of neutron import usage
         setup_extensions_middleware
     neutron/tests/unit/api/v2/test_base.py
         _get_path
+    neutron/tests/unit/db/test_agentschedulers_db.py
+        AgentSchedulerTestMixIn
     neutron/tests/unit/db/test_db_base_plugin_v2.py
         NeutronDbPluginV2TestCase
         optional_ctx
@@ -162,8 +162,6 @@ Summary of neutron import usage
         LBAAS_HOSTB
     neutron/tests/unit/extensions/test_quotasv2.py
         QuotaExtensionTestCase
-    neutron/tests/unit/plugins/openvswitch/test_agent_scheduler.py
-        AgentSchedulerTestMixIn
     neutron/tests/unit/testlib_api.py
         SubDictMatch
         WebTestCase

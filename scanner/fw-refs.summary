@@ -1,38 +1,50 @@
 Summary of neutron import usage
     neutron/agent/common/config.py
-        register_root_helper
+        ROOT_HELPER_OPTS
+        register_agent_state_opts_helper
+        register_interface_driver_opts_helper
+        register_process_monitor_opts
+        register_use_namespaces_opts_helper
+        setup_conf
         setup_logging
     neutron/agent/l3/agent.py
+        EXTERNAL_DEV_PREFIX
+        L3NATAgent
         L3NATAgentWithStateReport
     neutron/agent/l3/config.py
         OPTS
-    neutron/agent/l3/dvr_router.py
-        DvrRouter
-    neutron/agent/l3/dvr_snat_ns.py
-        SnatNamespace
-    neutron/agent/l3/legacy_router.py
-        LegacyRouter
+    neutron/agent/l3/ha.py
+        OPTS
+    neutron/agent/l3/router_info.py
+        RouterInfo
     neutron/agent/l3_agent.py
         main
+    neutron/agent/linux/external_process.py
+        OPTS
+    neutron/agent/linux/interface.py
+        LinuxInterfaceDriver.DEV_NAME_LEN
+        OPTS
     neutron/agent/linux/ip_lib.py
         IPWrapper
+        device_exists
     neutron/agent/linux/iptables_manager.py
-        IptablesManager
-    neutron/agent/linux/utils.py
-        execute
-        replace_file
+        binary_name
+        get_chain_name
     neutron/api/extensions.py
         ExtensionDescriptor
         ExtensionMiddleware
         PluginAwareExtensionManager
     neutron/api/v2/attributes.py
+        ATTR_NOT_SPECIFIED
+        DESCRIPTION_MAX_LEN
+        NAME_MAX_LEN
         PLURALS.update
-        UNLIMITED
+        RESOURCE_ATTRIBUTE_MAP
         _validate_ip_address
-        convert_none_to_empty_dict
+        _validate_subnet
+        convert_none_to_empty_list
         convert_to_boolean
         convert_to_int
-        convert_to_list
     neutron/api/v2/resource_helper.py
         build_plural_mappings
         build_resource_info
@@ -40,44 +52,44 @@ Summary of neutron import usage
         AFTER_CREATE
         AFTER_DELETE
         AFTER_UPDATE
-        BEFORE_DELETE
         BEFORE_UPDATE
     neutron/callbacks/registry.py
         subscribe
     neutron/callbacks/resources.py
         ROUTER
-        ROUTER_GATEWAY
-        ROUTER_INTERFACE
     neutron/common/config.py
+        core_opts
+        init
         load_paste_app
-        setup_logging
     neutron/common/constants.py
-        AGENT_TYPE_L3
+        DEVICE_OWNER_ROUTER_INTF
+        FLOATINGIP_KEY
+        INTERFACE_KEY
+        PROTO_NAME_ICMP
+        PROTO_NAME_TCP
+        PROTO_NAME_UDP
     neutron/common/exceptions.py
         BadRequest
+        Conflict
+        FirewallInternalDriverError
         InUse
         InvalidInput
         NeutronException
         NotFound
+        ServiceUnavailable
     neutron/common/rpc.py
-        PluginRpcDispatcher
         create_connection
         get_client
-    neutron/common/utils.py
-        execute
-        subprocess_popen
-    neutron/db/agentschedulers_db.py
-        DhcpAgentSchedulerDbMixin
+    neutron/common/topics.py
+        FIREWALL_PLUGIN
+        L3_AGENT
     neutron/db/common_db_mixin.py
         CommonDbMixin
-    neutron/db/l3_agentschedulers_db.py
-        L3AgentSchedulerDbMixin
-        RouterL3AgentBinding
-        RouterL3AgentBinding.l3_agent_id
-        RouterL3AgentBinding.router_id
-    neutron/db/l3_db.py
-        EXTERNAL_GW_INFO
-        Router
+    neutron/db/migration
+        LIBERTY
+    neutron/db/migration/cli.py
+        CONTRACT_BRANCH
+        EXPAND_BRANCH
     neutron/db/model_base.py
         BASEV2
         BASEV2.__table_args__
@@ -85,62 +97,42 @@ Summary of neutron import usage
     neutron/db/models_v2.py
         HasId
         HasTenant
-        Subnet
-    neutron/db/servicetype_db.py
-        ServiceTypeManager
-        ServiceTypeManager._instance
+    neutron/extensions
+        __path__
     neutron/extensions/l3.py
         RouterInUse
     neutron/i18n.py
         _LE
         _LI
         _LW
-    neutron/openstack/common/loopingcall.py
-        DynamicLoopingCall
-        FixedIntervalLoopingCall
-    neutron/openstack/common/periodic_task.py
-        PeriodicTasks
-        periodic_task
-    neutron/openstack/common/uuidutils.py
-        generate_uuid
     neutron/plugins/common/constants.py
         ACTIVE
-        COMMON_PREFIXES
-        CORE
+        CREATED
         DOWN
         ERROR
+        FIREWALL
+        INACTIVE
         L3_ROUTER_NAT
         PENDING_CREATE
-        VPN
-    neutron/plugins/common/utils.py
-        in_pending_status
-    neutron/scheduler/l3_agent_scheduler.py
-        ChanceScheduler
+        PENDING_DELETE
+        PENDING_UPDATE
+    neutron/plugins/ml2/drivers/freescale/config.py
+        get_crdclient
     neutron/services/provider_configuration.py
         get_provider_driver_class
     neutron/services/service_base.py
         ServicePluginBase
-        load_drivers
     neutron/tests/base.py
         BaseTestCase
-    neutron/tests/common/net_helpers.py
-        NamespaceFixture
     neutron/tests/functional/base.py
         BaseSudoTestCase
     neutron/tests/unit/api/v2/test_base.py
         _get_path
+        _uuid
     neutron/tests/unit/db/test_db_base_plugin_v2.py
         NeutronDbPluginV2TestCase
-        optional_ctx
     neutron/tests/unit/extensions/base.py
         ExtensionTestCase
-    neutron/tests/unit/extensions/test_agent.py
-        AgentDBTestMixIn
-        L3_HOSTA
     neutron/tests/unit/extensions/test_l3.py
         L3NatTestCaseMixin
-        TestL3NatIntPlugin
-    neutron/tests/unit/plugins/openvswitch/test_agent_scheduler.py
-        AgentSchedulerTestMixIn
-    neutron/tests/unit/testlib_api.py
-        SqlTestCase
+        L3TestExtensionManager

@@ -6,19 +6,23 @@ Various OpenStack tools and files...
 scanner.py
 ----------
 
-Run this and pass in a root directory and it will do the following things...
+Run this and pass in a source code directory (one level below the projeect root, so it doesn't try to examine .tox directory and other areas) and it will do the following things...
 
 First, it will look at each .py file and extract the Neutron imports in the file. Next, it will look at the places in the file where the import is used and collect up the name (method, variable, etc).
 
-As output, it will show each of the neutron files imported for the source file, along with the actual references. After all source files have been processed, the script will then print out all the neutron modules imported, along with a list of references used in each of the modules.
+As output, it will show each of the neutron files imported for the source file, along with the actual references. You can specify to have the output go to a file, by using the -o options.
+
+If you specify the -s option, after all source files have been processed, the script will then print out all the neutron modules imported, along with a list of references used in each of the modules. If the -o option was used, the summary output will be in a file with same name, and a '.summary' suffix.
 
 The script will handle the case where an import has aliases, and imports where the method (e.g. i18n _LE) is specified in the import line. There is a test_scanner.py file that has unit tests for the script to cover the important bits (not the reporting).
+
+If you don't specify a root directory, it will use the current directory (so run it from /opt/stack/neutron/neutron, for example).
 
 Example:
 
 <pre>
 $ cd /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn
-$ python ~/openstack/scanner.py device_drivers
+$ python ~/openstack/scanner.py device_drivers -s
 Analysis for device_drivers/ipsec.py
     ...
     neutron/i18n.py

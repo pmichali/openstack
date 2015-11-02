@@ -1,0 +1,454 @@
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/version.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/cmd/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/cmd/eventlet/vyatta_agent.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/cmd/eventlet/agent.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/cmd/eventlet/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/vyatta_agent.py
+    neutron/agent/l3_agent.py
+        main
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/agent.py
+    neutron/agent/l3/agent.py
+        L3NATAgentWithStateReport
+    neutron/agent/l3_agent.py
+        main
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/vpn_service.py
+    neutron/callbacks/events.py
+        AFTER_CREATE
+        AFTER_DELETE
+        AFTER_UPDATE
+    neutron/callbacks/registry.py
+        subscribe
+    neutron/callbacks/resources.py
+        ROUTER
+    neutron/services/provider_configuration.py
+        get_provider_driver_class
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/vyatta_vpn_service.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/plugin.py
+    neutron/db/servicetype_db.py
+        ServiceTypeManager.get_instance
+    neutron/i18n.py
+        _LI
+    neutron/plugins/common/constants.py
+        VPN
+    neutron/services/provider_configuration.py
+        ProviderConfiguration
+    neutron/services/service_base.py
+        load_drivers
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/cisco_ipsec.py
+    neutron/common/exceptions.py
+        NeutronException
+    neutron/common/rpc.py
+        create_connection
+        get_client
+    neutron/i18n.py
+        _LE
+        _LI
+        _LW
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+        ERROR
+    neutron/plugins/common/utils.py
+        in_pending_status
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/strongswan_ipsec.py
+    neutron/agent/linux/ip_lib.py
+        IPWrapper
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/ipsec.py
+    neutron/agent/linux/ip_lib.py
+        IPWrapper
+    neutron/agent/linux/utils.py
+        replace_file
+    neutron/api/v2/attributes.py
+        _validate_ip_address
+    neutron/common/rpc.py
+        create_connection
+        get_client
+    neutron/common/utils.py
+        ensure_dir
+    neutron/i18n.py
+        _LE
+        _LI
+        _LW
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+        ERROR
+    neutron/plugins/common/utils.py
+        in_pending_status
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/libreswan_ipsec.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/fedora_strongswan_ipsec.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/vyatta_ipsec.py
+    neutron/common/rpc.py
+        create_connection
+        get_client
+    neutron/i18n.py
+        _LE
+        _LW
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/device_drivers/cisco_csr_rest_client.py
+    neutron/i18n.py
+        _LE
+        _LW
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/base_ipsec.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/cisco_ipsec.py
+    neutron/common/rpc.py
+        PluginRpcDispatcher
+        create_connection
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/cisco_validator.py
+    neutron/common/exceptions.py
+        BadRequest
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/cisco_csr_db.py
+    neutron/common/exceptions.py
+        NeutronException
+    neutron/db/model_base.py
+        BASEV2
+    neutron/i18n.py
+        _LI
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/ipsec_validator.py
+    neutron/common/exceptions.py
+        BadRequest
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/ipsec.py
+    neutron/common/rpc.py
+        create_connection
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/__init__.py
+    neutron/common/rpc.py
+        get_client
+    neutron/plugins/common/constants.py
+        L3_ROUTER_NAT
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/service_drivers/vyatta_ipsec.py
+    neutron/common/rpc.py
+        create_connection
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/common/topics.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/common/netns_wrapper.py
+    neutron/common/config.py
+        setup_logging
+    neutron/common/utils.py
+        execute
+        subprocess_popen
+    neutron/i18n.py
+        _LE
+        _LI
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/common/constants.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/services/vpn/common/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/extensions/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/extensions/vpnaas.py
+    neutron/api/extensions.py
+        ExtensionDescriptor
+    neutron/api/v2/attributes.py
+        DESCRIPTION_MAX_LEN
+        NAME_MAX_LEN
+        PLURALS.update
+        TENANT_ID_MAX_LEN
+        UNLIMITED
+        convert_none_to_empty_dict
+        convert_to_boolean
+        convert_to_int
+        convert_to_list
+    neutron/api/v2/resource_helper.py
+        build_plural_mappings
+        build_resource_info
+    neutron/common/exceptions.py
+        BadRequest
+        InUse
+        InvalidInput
+        NeutronException
+        NotFound
+    neutron/plugins/common/constants.py
+        VPN
+    neutron/services/service_base.py
+        ServicePluginBase
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/base.py
+    neutron/tests/base.py
+        BaseTestCase
+    neutron/tests/unit/db/test_db_base_plugin_v2.py
+        NeutronDbPluginV2TestCase
+    neutron/tests/unit/extensions/base.py
+        ExtensionTestCase
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/test_vpn_service.py
+    neutron/agent/l3/legacy_router.py
+        LegacyRouter
+    neutron/callbacks/registry.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/test_plugin.py
+    neutron/common/constants.py
+        AGENT_TYPE_L3
+    neutron/plugins/common/constants.py
+        ACTIVE
+        VPN
+    neutron/tests/unit/db/test_agentschedulers_db.py
+        AgentSchedulerTestMixIn
+    neutron/tests/unit/extensions/test_agent.py
+        AgentDBTestMixIn
+        L3_HOSTA
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/test_vyatta_vpn_service.py
+    neutron/agent/common/config.py
+        register_root_helper
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/device_drivers/test_ipsec.py
+    neutron/agent/l3/dvr_edge_router.py
+        DvrEdgeRouter
+    neutron/agent/l3/dvr_snat_ns.py
+        SnatNamespace
+    neutron/agent/l3/legacy_router.py
+        LegacyRouter
+    neutron/agent/linux/iptables_manager.py
+        IptablesManager
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+        ERROR
+        PENDING_CREATE
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/device_drivers/test_cisco_csr_rest_client.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/device_drivers/test_vyatta_ipsec.py
+    neutron/agent/l3/legacy_router.py
+        LegacyRouter
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/device_drivers/test_cisco_ipsec.py
+    neutron/plugins/common/constants.py
+        ACTIVE
+        DOWN
+        ERROR
+        PENDING_CREATE
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/device_drivers/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/service_drivers/test_ipsec.py
+    neutron/common/exceptions.py
+        SubnetNotFound
+    neutron/db/l3_db.py
+        EXTERNAL_GW_INFO
+    neutron/db/servicetype_db.py
+        ServiceTypeManager
+    neutron/plugins/common/constants.py
+        L3_ROUTER_NAT
+        VPN
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/service_drivers/test_vyatta_ipsec.py
+    neutron/plugins/common/constants.py
+        L3_ROUTER_NAT
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/service_drivers/test_cisco_ipsec.py
+    neutron/db/servicetype_db.py
+        ServiceTypeManager
+        ServiceTypeManager._instance
+    neutron/plugins/common/constants.py
+        L3_ROUTER_NAT
+        VPN
+    neutron/tests/unit/testlib_api.py
+        SqlTestCase
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/service_drivers/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/common/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/services/vpn/common/test_netns_wrapper.py
+    neutron/tests/base.py
+        BaseTestCase
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/extensions/test_vpnaas.py
+    neutron/plugins/common/constants.py
+        VPN
+    neutron/tests/unit/api/v2/test_base.py
+        _get_path
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/extensions/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/db/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/db/vpn/test_vpn_db.py
+    neutron/api/extensions.py
+        ExtensionMiddleware
+        PluginAwareExtensionManager
+    neutron/api/v2/attributes.py
+        ATTR_NOT_SPECIFIED
+    neutron/common/config.py
+        load_paste_app
+    neutron/common/constants.py
+        DEVICE_OWNER_ROUTER_INTF
+    neutron/db/agentschedulers_db.py
+        DhcpAgentSchedulerDbMixin
+    neutron/db/l3_agentschedulers_db.py
+        L3AgentSchedulerDbMixin
+    neutron/db/servicetype_db.py
+        ServiceTypeManager
+        ServiceTypeManager._instance
+    neutron/extensions/l3.py
+        RouterInUse
+    neutron/plugins/common/constants.py
+        ACTIVE
+        CORE
+        L3_ROUTER_NAT
+        VPN
+    neutron/scheduler/l3_agent_scheduler.py
+        ChanceScheduler
+    neutron/tests/unit/db/test_db_base_plugin_v2.py
+        optional_ctx
+    neutron/tests/unit/extensions/test_l3.py
+        L3NatTestCaseMixin
+        TestL3NatIntPlugin
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/unit/db/vpn/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/common/test_migrations_sync.py
+    neutron/db/migration/alembic_migrations/external.py
+        TABLES
+        VPNAAS_TABLES
+    neutron/db/migration/cli.py
+        do_alembic_command
+        get_alembic_configs
+    neutron/tests/common/base.py
+        MySQLTestCase
+        PostgreSQLTestCase
+    neutron/tests/functional/db/test_migrations.py
+        _TestModelsMigrations
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/common/test_scenario.py
+    neutron/agent/common/config.py
+        register_process_monitor_opts
+        setup_logging
+    neutron/agent/common/ovs_lib.py
+        OVSBridge
+    neutron/agent/l3/namespaces.py
+        EXTERNAL_DEV_PREFIX
+        INTERNAL_DEV_PREFIX
+        RouterNamespace
+    neutron/agent/l3/router_info.py
+        RouterInfo
+    neutron/agent/l3_agent.py
+        register_opts
+    neutron/agent/linux/external_process.py
+        ProcessManager
+    neutron/agent/linux/interface.py
+        LinuxInterfaceDriver.DEV_NAME_LEN
+    neutron/agent/linux/ip_lib.py
+        IPDevice
+        send_ip_addr_adv_notif
+    neutron/agent/linux/utils.py
+        wait_until_true
+    neutron/common/config.py
+        core_cli_opts
+        core_opts
+    neutron/common/constants.py
+        HA_INTERFACE_KEY
+    neutron/common/utils.py
+        get_random_mac
+        ip_to_cidr
+    neutron/plugins/common/constants.py
+        PENDING_CREATE
+    neutron/services/provider_configuration.py
+        serviceprovider_opts
+    neutron/tests/common/l3_test_common.py
+        get_ha_interface
+    neutron/tests/common/net_helpers.py
+        NamespaceFixture
+        OVSBridgeFixture
+        OVSPortFixture
+        assert_no_ping
+        assert_ping
+        create_patch_ports
+        increment_ip_cidr
+    neutron/tests/functional/base.py
+        BaseSudoTestCase
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/common/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/openswan/test_openswan_driver.py
+    neutron/agent/linux/ip_lib.py
+        add_namespace_to_cmd
+    neutron/agent/linux/utils.py
+        execute
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/openswan/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/strongswan/test_strongswan_driver.py
+    neutron/agent/l3/config.py
+        OPTS
+    neutron/agent/l3/legacy_router.py
+        LegacyRouter
+    neutron/plugins/common/constants.py
+        PENDING_CREATE
+    neutron/tests/functional/base.py
+        BaseSudoTestCase
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/strongswan/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/tests/functional/strongswan/test_netns_wrapper.py
+    neutron/agent/common/config.py
+        setup_logging
+    neutron/agent/linux/utils.py
+        execute
+    neutron/tests/common/net_helpers.py
+        NamespaceFixture
+    neutron/tests/functional/base.py
+        BaseSudoTestCase
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/vpn/vpn_db.py
+    neutron/callbacks/events.py
+        BEFORE_DELETE
+        BEFORE_UPDATE
+    neutron/callbacks/registry.py
+        subscribe
+    neutron/callbacks/resources.py
+        ROUTER
+        ROUTER_GATEWAY
+        ROUTER_INTERFACE
+    neutron/common/constants.py
+        AGENT_TYPE_L3
+    neutron/db/common_db_mixin.py
+        CommonDbMixin
+    neutron/db/l3_agentschedulers_db.py
+        RouterL3AgentBinding
+        RouterL3AgentBinding.l3_agent_id
+        RouterL3AgentBinding.router_id
+    neutron/extensions/l3.py
+        RouterInUse
+    neutron/i18n.py
+        _LW
+    neutron/plugins/common/constants.py
+        PENDING_CREATE
+        VPN
+    neutron/plugins/common/utils.py
+        in_pending_status
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/vpn/vpn_models.py
+    neutron/api/v2/attributes.py
+        DESCRIPTION_MAX_LEN
+        NAME_MAX_LEN
+    neutron/db/l3_db.py
+        Router
+    neutron/db/model_base.py
+        BASEV2
+    neutron/db/models_v2.py
+        HasId
+        HasTenant
+        Subnet
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/vpn/vpn_validator.py
+    neutron/api/v2/attributes.py
+        _validate_ip_address
+        _validate_subnet
+        _validate_uuid
+    neutron/common/exceptions.py
+        SubnetNotFound
+    neutron/db/l3_db.py
+        EXTERNAL_GW_INFO
+    neutron/plugins/common/constants.py
+        L3_ROUTER_NAT
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/vpn/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/env.py
+    neutron/db/model_base.py
+        BASEV2.__table_args__
+        BASEV2.metadata
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/__init__.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/start_neutron_vpnaas.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/3ea02b2a773e_add_index_tenant_id.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/kilo_release.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/liberty/contract/333dfd6afaa2_populate_vpn_service_table_fields.py
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/liberty/contract/56893333aa52_fix_identifier_map_fk.py
+    neutron/db/migration/cli.py
+        CONTRACT_BRANCH
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/liberty/contract/2c82e782d734_drop_tenant_id_in_cisco_csr_identifier_.py
+    neutron/db/migration
+        LIBERTY
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/liberty/expand/30018084ed99_initial.py
+    neutron/db/migration/cli.py
+        EXPAND_BRANCH
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/liberty/expand/24f28869838b_add_fields_to_vpn_service_table.py
+    neutron/db/migration
+        LIBERTY
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/migration/alembic_migrations/versions/liberty/expand/41b509d10b5e_vpnaas_endpoint_groups.py
+    neutron/api/v2/attributes.py
+        DESCRIPTION_MAX_LEN
+        NAME_MAX_LEN
+        TENANT_ID_MAX_LEN
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/models/head.py
+    neutron/db/migration/models/head.py
+        model_base.BASEV2.metadata
+Analysis for /opt/stack/neutron-vpnaas/neutron_vpnaas/db/models/__init__.py
