@@ -1,76 +1,125 @@
+Processing File: fw-refs.summary
+Processing File: lb-refs.summary
+Processing File: vpn-refs.summary
     neutron/agent/common/config.py
-        ROOT_HELPER_OPTS
+        INTERFACE_DRIVER_OPTS
         register_agent_state_opts_helper
         register_interface_driver_opts_helper
         register_process_monitor_opts
+        register_root_helper
         register_use_namespaces_opts_helper
+        ROOT_HELPER_OPTS
         setup_conf
         setup_logging
-
+    neutron/agent/common/ovs_lib.py
+        OVSBridge
     neutron/agent/l3/agent.py
         EXTERNAL_DEV_PREFIX
         L3NATAgent
         L3NATAgentWithStateReport
     neutron/agent/l3/config.py
         OPTS
+    neutron/agent/l3/dvr_edge_router.py
+        DvrEdgeRouter
+    neutron/agent/l3/dvr_snat_ns.py
+        SnatNamespace
     neutron/agent/l3/ha.py
         OPTS
+    neutron/agent/l3/legacy_router.py
+        LegacyRouter
+    neutron/agent/l3/namespaces.py
+        EXTERNAL_DEV_PREFIX
+        INTERNAL_DEV_PREFIX
+        RouterNamespace
     neutron/agent/l3/router_info.py
         RouterInfo
-
     neutron/agent/l3_agent.py
         main
-
+        register_opts
     neutron/agent/linux/external_process.py
         OPTS
+        ProcessManager
     neutron/agent/linux/interface.py
         LinuxInterfaceDriver.DEV_NAME_LEN
         OPTS
     neutron/agent/linux/ip_lib.py
-        IPWrapper
+        add_namespace_to_cmd
         device_exists
+        IPDevice
+        IPWrapper
+        send_ip_addr_adv_notif
     neutron/agent/linux/iptables_manager.py
         binary_name
         get_chain_name
-
+        IptablesManager
+    neutron/agent/linux/utils.py
+        execute
+        replace_file
+        wait_until_true
+    neutron/agent/rpc.py
+        PluginReportStateAPI
     neutron/api/extensions.py
         ExtensionDescriptor
         ExtensionMiddleware
         PluginAwareExtensionManager
-
+        PluginAwareExtensionManager.get_instance
+        ResourceExtension
     neutron/api/v2/attributes.py
+        _validate_ip_address
+        _validate_subnet
+        _validate_uuid
         ATTR_NOT_SPECIFIED
+        convert_none_to_empty_dict
+        convert_none_to_empty_list
+        convert_to_boolean
+        convert_to_int
+        convert_to_list
         DESCRIPTION_MAX_LEN
         NAME_MAX_LEN
         PLURALS.update
         RESOURCE_ATTRIBUTE_MAP
-        _validate_ip_address
-        _validate_subnet
-        convert_none_to_empty_list
-        convert_to_boolean
-        convert_to_int
+        RESOURCE_ATTRIBUTE_MAP.update
+        TENANT_ID_MAX_LEN
+        UNLIMITED
+    neutron/api/v2/base.py
+        create_resource
+        FAULT_MAP
+    neutron/api/v2/resource.py
+        Resource
     neutron/api/v2/resource_helper.py
         build_plural_mappings
         build_resource_info
-
     neutron/callbacks/events.py
         AFTER_CREATE
         AFTER_DELETE
         AFTER_UPDATE
+        BEFORE_DELETE
         BEFORE_UPDATE
     neutron/callbacks/registry.py
         subscribe
+        unsubscribe
     neutron/callbacks/resources.py
+        PORT
         ROUTER
-
+        ROUTER_GATEWAY
+        ROUTER_INTERFACE
+        SUBNET
     neutron/common/config.py
+        core_cli_opts
         core_opts
         init
         load_paste_app
+        setup_logging
     neutron/common/constants.py
+        AGENT_TYPE_L3
+        AGENT_TYPE_LOADBALANCER
+        DEVICE_OWNER_LOADBALANCER
+        DEVICE_OWNER_LOADBALANCERV2
         DEVICE_OWNER_ROUTER_INTF
         FLOATINGIP_KEY
+        HA_INTERFACE_KEY
         INTERFACE_KEY
+        LBAAS_AGENT_SCHEDULER_EXT_ALIAS
         PROTO_NAME_ICMP
         PROTO_NAME_TCP
         PROTO_NAME_UDP
@@ -79,143 +128,8 @@
         Conflict
         FirewallInternalDriverError
         InUse
-        InvalidInput
-        NeutronException
-        NotFound
-        ServiceUnavailable
-    neutron/common/rpc.py
-        create_connection
-        get_client
-    neutron/common/topics.py
-        FIREWALL_PLUGIN
-        L3_AGENT
-
-    neutron/db/common_db_mixin.py
-        CommonDbMixin
-    neutron/db/migration
-        LIBERTY
-    neutron/db/migration/cli.py
-        CONTRACT_BRANCH
-        EXPAND_BRANCH
-    neutron/db/model_base.py
-        BASEV2
-        BASEV2.__table_args__
-        BASEV2.metadata
-    neutron/db/models_v2.py
-        HasId
-        HasTenant
-
-    neutron/extensions
-        __path__
-    neutron/extensions/l3.py
-        RouterInUse
-
-    neutron/i18n.py
-        _LE
-        _LI
-        _LW
-
-    neutron/plugins/common/constants.py
-        ACTIVE
-        CREATED
-        DOWN
-        ERROR
-        FIREWALL
-        INACTIVE
-        L3_ROUTER_NAT
-        PENDING_CREATE
-        PENDING_DELETE
-        PENDING_UPDATE
-
-    neutron/plugins/ml2/drivers/freescale/config.py
-        get_crdclient
-
-    neutron/services/provider_configuration.py
-        get_provider_driver_class
-    neutron/services/service_base.py
-        ServicePluginBase
-
-    neutron/tests/base.py
-        BaseTestCase
-    neutron/tests/functional/base.py
-        BaseSudoTestCase
-    neutron/tests/unit/api/v2/test_base.py
-        _get_path
-        _uuid
-    neutron/tests/unit/db/test_db_base_plugin_v2.py
-        NeutronDbPluginV2TestCase
-    neutron/tests/unit/extensions/base.py
-        ExtensionTestCase
-    neutron/tests/unit/extensions/test_l3.py
-        L3NatTestCaseMixin
-        L3TestExtensionManager
-    neutron/agent/common/config.py
-        INTERFACE_DRIVER_OPTS
-        register_agent_state_opts_helper
-        register_interface_driver_opts_helper
-        register_root_helper
-        setup_logging
-
-    neutron/agent/linux/interface.py
-        OPTS
-    neutron/agent/linux/ip_lib.py
-        IPDevice
-        IPWrapper
-        device_exists
-    neutron/agent/linux/utils.py
-        execute
-        replace_file
-
-    neutron/agent/rpc.py
-        PluginReportStateAPI
-
-    neutron/api/extensions.py
-        ExtensionDescriptor
-        ExtensionMiddleware
-        PluginAwareExtensionManager
-        PluginAwareExtensionManager.get_instance
-        ResourceExtension
-
-    neutron/api/v2/attributes.py
-        ATTR_NOT_SPECIFIED
-        PLURALS.update
-        RESOURCE_ATTRIBUTE_MAP
-        RESOURCE_ATTRIBUTE_MAP.update
-        convert_none_to_empty_dict
-        convert_to_boolean
-        convert_to_int
-        convert_to_list
-    neutron/api/v2/base.py
-        FAULT_MAP
-        create_resource
-    neutron/api/v2/resource.py
-        Resource
-    neutron/api/v2/resource_helper.py
-        build_plural_mappings
-        build_resource_info
-
-    neutron/callbacks/events.py
-        BEFORE_DELETE
-    neutron/callbacks/registry.py
-        subscribe
-        unsubscribe
-    neutron/callbacks/resources.py
-        PORT
-        SUBNET
-
-    neutron/common/config.py
-        init
-        load_paste_app
-    neutron/common/constants.py
-        AGENT_TYPE_LOADBALANCER
-        DEVICE_OWNER_LOADBALANCER
-        DEVICE_OWNER_LOADBALANCERV2
-        LBAAS_AGENT_SCHEDULER_EXT_ALIAS
-    neutron/common/exceptions.py
-        BadRequest
-        Conflict
-        InUse
         Invalid
+        InvalidInput
         IpAddressGenerationFailure
         IpAddressInUse
         NeutronException
@@ -224,33 +138,56 @@
         PortNotFound
         PreexistingDeviceFailure
         ServicePortInUse
+        ServiceUnavailable
         SubnetInUse
+        SubnetNotFound
     neutron/common/rpc.py
-        Service
         create_connection
         get_client
+        PluginRpcDispatcher
+        Service
     neutron/common/topics.py
+        FIREWALL_PLUGIN
+        L3_AGENT
         LOADBALANCER_AGENT
         LOADBALANCER_PLUGIN
     neutron/common/utils.py
         ensure_dir
+        execute
+        get_random_mac
+        ip_to_cidr
+        subprocess_popen
         synchronized
-
     neutron/db/agents_db.py
         Agent
         AgentExtRpcCallback
     neutron/db/agentschedulers_db.py
         AgentSchedulerDbMixin
+        DhcpAgentSchedulerDbMixin
     neutron/db/common_db_mixin.py
         CommonDbMixin
+    neutron/db/l3_agentschedulers_db.py
+        L3AgentSchedulerDbMixin
+        RouterL3AgentBinding
+        RouterL3AgentBinding.l3_agent_id
+        RouterL3AgentBinding.router_id
     neutron/db/l3_db.py
+        EXTERNAL_GW_INFO
         FloatingIP
+        Router
     neutron/db/migration
-        LIBERTY
         alter_enum
+        LIBERTY
+    neutron/db/migration/alembic_migrations/external.py
+        TABLES
+        VPNAAS_TABLES
     neutron/db/migration/cli.py
         CONTRACT_BRANCH
+        do_alembic_command
         EXPAND_BRANCH
+        get_alembic_configs
+    neutron/db/migration/models/head.py
+        model_base.BASEV2.metadata
     neutron/db/model_base.py
         BASEV2
         BASEV2.__table_args__
@@ -261,54 +198,85 @@
         HasTenant
         IPAllocation
         Port
+        Subnet
     neutron/db/servicetype_db.py
         ProviderResourceAssociation
         ProviderResourceAssociation.resource_id
         ServiceTypeManager
         ServiceTypeManager._instance
         ServiceTypeManager.get_instance
-
+    neutron/extensions
+        __path__
     neutron/extensions/agent.py
         AgentNotFound
         RESOURCE_ATTRIBUTE_MAP
+    neutron/extensions/l3.py
+        RouterInUse
     neutron/extensions/portbindings.py
         HOST_ID
-
     neutron/i18n.py
         _
         _LE
         _LI
         _LW
-
     neutron/plugins/common/constants.py
         ACTIVE
         ACTIVE_PENDING_STATUSES
+        CORE
+        CREATED
+        DOWN
         ERROR
+        FIREWALL
         INACTIVE
+        L3_ROUTER_NAT
         LOADBALANCER
         LOADBALANCERV2
         PENDING_CREATE
         PENDING_DELETE
         PENDING_UPDATE
-
+        VPN
+    neutron/plugins/common/utils.py
+        in_pending_status
+    neutron/plugins/ml2/drivers/freescale/config.py
+        get_crdclient
+    neutron/scheduler/l3_agent_scheduler.py
+        ChanceScheduler
     neutron/services/provider_configuration.py
         DefaultServiceProviderNotFound
-        ProviderConfiguration
-        ServiceProviderNotFound
         get_provider_driver_class
         normalize_provider_name
+        ProviderConfiguration
+        serviceprovider_opts
+        ServiceProviderNotFound
     neutron/services/service_base.py
-        ServicePluginBase
         load_drivers
-
+        ServicePluginBase
     neutron/tests/base.py
         BaseTestCase
+    neutron/tests/common/base.py
+        MySQLTestCase
+        PostgreSQLTestCase
     neutron/tests/common/helpers.py
         _register_agent
+    neutron/tests/common/l3_test_common.py
+        get_ha_interface
+    neutron/tests/common/net_helpers.py
+        assert_no_ping
+        assert_ping
+        create_patch_ports
+        increment_ip_cidr
+        NamespaceFixture
+        OVSBridgeFixture
+        OVSPortFixture
+    neutron/tests/functional/base.py
+        BaseSudoTestCase
+    neutron/tests/functional/db/test_migrations.py
+        _TestModelsMigrations
     neutron/tests/unit/api/test_extensions.py
         setup_extensions_middleware
     neutron/tests/unit/api/v2/test_base.py
         _get_path
+        _uuid
     neutron/tests/unit/db/test_agentschedulers_db.py
         AgentSchedulerTestMixIn
     neutron/tests/unit/db/test_db_base_plugin_v2.py
@@ -320,221 +288,17 @@
         ExtensionTestCase
     neutron/tests/unit/extensions/test_agent.py
         AgentDBTestMixIn
+        L3_HOSTA
         LBAAS_HOSTA
         LBAAS_HOSTB
+    neutron/tests/unit/extensions/test_l3.py
+        L3NatTestCaseMixin
+        L3TestExtensionManager
+        TestL3NatIntPlugin
     neutron/tests/unit/extensions/test_quotasv2.py
         QuotaExtensionTestCase
     neutron/tests/unit/testlib_api.py
+        create_request
+        SqlTestCase
         SubDictMatch
         WebTestCase
-        create_request
-    neutron/agent/common/config.py
-        register_process_monitor_opts
-        register_root_helper
-        setup_logging
-    neutron/agent/common/ovs_lib.py
-        OVSBridge
-
-    neutron/agent/l3/agent.py
-        L3NATAgentWithStateReport
-    neutron/agent/l3/config.py
-        OPTS
-    neutron/agent/l3/dvr_edge_router.py
-        DvrEdgeRouter
-    neutron/agent/l3/dvr_snat_ns.py
-        SnatNamespace
-    neutron/agent/l3/legacy_router.py
-        LegacyRouter
-    neutron/agent/l3/namespaces.py
-        EXTERNAL_DEV_PREFIX
-        INTERNAL_DEV_PREFIX
-        RouterNamespace
-    neutron/agent/l3/router_info.py
-        RouterInfo
-
-    neutron/agent/l3_agent.py
-        main
-        register_opts
-
-    neutron/agent/linux/external_process.py
-        ProcessManager
-    neutron/agent/linux/interface.py
-        LinuxInterfaceDriver.DEV_NAME_LEN
-    neutron/agent/linux/ip_lib.py
-        IPDevice
-        IPWrapper
-        add_namespace_to_cmd
-        send_ip_addr_adv_notif
-    neutron/agent/linux/iptables_manager.py
-        IptablesManager
-    neutron/agent/linux/utils.py
-        execute
-        replace_file
-        wait_until_true
-
-    neutron/api/extensions.py
-        ExtensionDescriptor
-        ExtensionMiddleware
-        PluginAwareExtensionManager
-
-    neutron/api/v2/attributes.py
-        ATTR_NOT_SPECIFIED
-        DESCRIPTION_MAX_LEN
-        NAME_MAX_LEN
-        PLURALS.update
-        TENANT_ID_MAX_LEN
-        UNLIMITED
-        _validate_ip_address
-        _validate_subnet
-        _validate_uuid
-        convert_none_to_empty_dict
-        convert_to_boolean
-        convert_to_int
-        convert_to_list
-    neutron/api/v2/resource_helper.py
-        build_plural_mappings
-        build_resource_info
-
-    neutron/callbacks/events.py
-        AFTER_CREATE
-        AFTER_DELETE
-        AFTER_UPDATE
-        BEFORE_DELETE
-        BEFORE_UPDATE
-    neutron/callbacks/registry.py
-        subscribe
-    neutron/callbacks/resources.py
-        ROUTER
-        ROUTER_GATEWAY
-        ROUTER_INTERFACE
-
-    neutron/common/config.py
-        core_cli_opts
-        core_opts
-        load_paste_app
-        setup_logging
-    neutron/common/constants.py
-        AGENT_TYPE_L3
-        DEVICE_OWNER_ROUTER_INTF
-        HA_INTERFACE_KEY
-    neutron/common/exceptions.py
-        BadRequest
-        InUse
-        InvalidInput
-        NeutronException
-        NotFound
-        SubnetNotFound
-    neutron/common/rpc.py
-        PluginRpcDispatcher
-        create_connection
-        get_client
-    neutron/common/utils.py
-        ensure_dir
-        execute
-        get_random_mac
-        ip_to_cidr
-        subprocess_popen
-
-    neutron/db/agentschedulers_db.py
-        DhcpAgentSchedulerDbMixin
-    neutron/db/common_db_mixin.py
-        CommonDbMixin
-    neutron/db/l3_agentschedulers_db.py
-        L3AgentSchedulerDbMixin
-        RouterL3AgentBinding
-        RouterL3AgentBinding.l3_agent_id
-        RouterL3AgentBinding.router_id
-    neutron/db/l3_db.py
-        EXTERNAL_GW_INFO
-        Router
-    neutron/db/migration
-        LIBERTY
-    neutron/db/migration/alembic_migrations/external.py
-        TABLES
-        VPNAAS_TABLES
-    neutron/db/migration/cli.py
-        CONTRACT_BRANCH
-        EXPAND_BRANCH
-        do_alembic_command
-        get_alembic_configs
-    neutron/db/migration/models/head.py
-        model_base.BASEV2.metadata
-    neutron/db/model_base.py
-        BASEV2
-        BASEV2.__table_args__
-        BASEV2.metadata
-    neutron/db/models_v2.py
-        HasId
-        HasTenant
-        Subnet
-    neutron/db/servicetype_db.py
-        ServiceTypeManager
-        ServiceTypeManager._instance
-        ServiceTypeManager.get_instance
-
-    neutron/extensions/l3.py
-        RouterInUse
-
-    neutron/i18n.py
-        _LE
-        _LI
-        _LW
-
-    neutron/plugins/common/constants.py
-        ACTIVE
-        CORE
-        DOWN
-        ERROR
-        L3_ROUTER_NAT
-        PENDING_CREATE
-        VPN
-    neutron/plugins/common/utils.py
-        in_pending_status
-
-    neutron/scheduler/l3_agent_scheduler.py
-        ChanceScheduler
-
-    neutron/services/provider_configuration.py
-        ProviderConfiguration
-        get_provider_driver_class
-        serviceprovider_opts
-    neutron/services/service_base.py
-        ServicePluginBase
-        load_drivers
-
-    neutron/tests/base.py
-        BaseTestCase
-    neutron/tests/common/base.py
-        MySQLTestCase
-        PostgreSQLTestCase
-    neutron/tests/common/l3_test_common.py
-        get_ha_interface
-    neutron/tests/common/net_helpers.py
-        NamespaceFixture
-        OVSBridgeFixture
-        OVSPortFixture
-        assert_no_ping
-        assert_ping
-        create_patch_ports
-        increment_ip_cidr
-    neutron/tests/functional/base.py
-        BaseSudoTestCase
-    neutron/tests/functional/db/test_migrations.py
-        _TestModelsMigrations
-    neutron/tests/unit/api/v2/test_base.py
-        _get_path
-    neutron/tests/unit/db/test_agentschedulers_db.py
-        AgentSchedulerTestMixIn
-    neutron/tests/unit/db/test_db_base_plugin_v2.py
-        NeutronDbPluginV2TestCase
-        optional_ctx
-    neutron/tests/unit/extensions/base.py
-        ExtensionTestCase
-    neutron/tests/unit/extensions/test_agent.py
-        AgentDBTestMixIn
-        L3_HOSTA
-    neutron/tests/unit/extensions/test_l3.py
-        L3NatTestCaseMixin
-        TestL3NatIntPlugin
-    neutron/tests/unit/testlib_api.py
-        SqlTestCase
